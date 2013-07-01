@@ -5,7 +5,13 @@
   </head>
   <body>
     <div>
-
+      <% @messages.each_with_index do |msg, i| %>
+      <h2><strong>Message <%= i+1 %></strong></h2>
+      From: <%= msg[:sender] %></br>
+      To: <%= msg[:receiver] %></br>
+      Message: <%= msg[:content] %>
+    </br></br>
+      <% end %>
     </div>
     <a href="/reset"><b>DELETE ALL MESSAGES</b></a>
   </body>

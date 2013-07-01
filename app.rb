@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'json'
 require "sinatra/activerecord"
+require 'debugger'
 
 
 set :database, "sqlite3:///ichat.db"
@@ -12,12 +13,15 @@ get '/' do
 end
 
 get '/reset' do
-   # Reset the messages
+   Message.delete_all()
   "Messages reset!"
+
 end
 
 post '/' do
-  # TODO: Read the message contents, save to the database
+  Message.create(params)
+  @messages = Message.all
+  erb :messages
 
 end
 
